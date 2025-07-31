@@ -1,8 +1,8 @@
 package commerce.cafe_commerce.entities;
 
-public class Categoria {
-    
-}
+import jakarta.persistence.*;
+import lombok.*;
+
 @Entity
 @Table(name = "categoria")
 @Data
@@ -12,11 +12,12 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoria_id")
     private Integer categoriaId;
 
+    @Column(name = "nombre", nullable = false, length = 50)
     private String nombre;
-    private String descripcion;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
-    private List<Presentacion> presentaciones;
+    @Column(name = "descripcion", length = 200)
+    private String descripcion;
 }
